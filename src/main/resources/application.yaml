@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: motordecisao
+  threads:
+    virtual:
+      enabled: true
+
+logbook:
+  filter:
+    enabled: true
+  format:
+    style: json
+  obfuscate:
+    headers:
+      - Authorization
+      - X-Auth-Token
+
+avaliacao:
+  upstream:
+    checkin:
+      url: http://localhost:8081

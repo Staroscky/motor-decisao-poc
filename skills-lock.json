@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "spec-driven-build": {
+      "source": "jjeanjacques10/skills",
+      "sourceType": "github",
+      "skillPath": "skills/development/spec-driven-build/SKILL.md",
+      "computedHash": "98ed2a60c499da44bda2f7f448c50009a3cdedf8df49f018f90b80c443796034"
+    }
+  }
+}
