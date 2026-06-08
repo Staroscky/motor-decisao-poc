@@ -1,6 +1,6 @@
 package com.staroscky.motordecisao.avaliacao;
 
-import com.staroscky.motordecisao.avaliacao.contexto.RestricaoGenerica;
+import com.staroscky.motordecisao.avaliacao.modelo.restricao.RestricaoGenerica;
 import com.staroscky.motordecisao.avaliacao.contexto.ResultadoViabilidade;
 import org.junit.jupiter.api.Test;
 

@@ -1,7 +1,7 @@
 package com.staroscky.motordecisao.avaliacao.response;
 
-import com.staroscky.motordecisao.avaliacao.contexto.Limite;
-import com.staroscky.motordecisao.avaliacao.contexto.Restricao;
+import com.staroscky.motordecisao.avaliacao.modelo.Limite;
+import com.staroscky.motordecisao.avaliacao.modelo.restricao.Restricao;
 
 import java.util.List;
 

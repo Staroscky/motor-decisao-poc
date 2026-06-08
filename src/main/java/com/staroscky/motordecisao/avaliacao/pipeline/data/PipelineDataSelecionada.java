@@ -1,4 +1,4 @@
-package com.staroscky.motordecisao.avaliacao.pipeline;
+package com.staroscky.motordecisao.avaliacao.pipeline.data;
 
 import com.staroscky.motordecisao.avaliacao.contexto.AvaliacaoContexto;
 import com.staroscky.motordecisao.avaliacao.contexto.ResultadoViabilidade;
@@ -34,9 +34,12 @@ public class PipelineDataSelecionada {
         for (Instrumento instrumento : contexto.getInstrumentos()) {
             ResultadoViabilidade resultado =
                 contexto.getResultado(instrumento).getDataSelecionada();
-            validadores.stream()
-                .filter(v -> v.suporta(contexto, instrumento))
-                .forEach(v -> v.validar(contexto, instrumento, resultado));
+
+            for (Validador validador : validadores) {
+                if (!validador.suporta(contexto, instrumento)) continue;
+                validador.validar(contexto, instrumento, resultado);
+                if (!resultado.isValido()) break;
+            }
         }
     }
 }

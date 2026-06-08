@@ -1,8 +1,8 @@
 package com.staroscky.motordecisao.avaliacao;
 
 import com.staroscky.motordecisao.avaliacao.contexto.AvaliacaoContexto;
-import com.staroscky.motordecisao.avaliacao.pipeline.PipelineAgendamento;
-import com.staroscky.motordecisao.avaliacao.pipeline.PipelineDataSelecionada;
+import com.staroscky.motordecisao.avaliacao.pipeline.agendamento.PipelineAgendamento;
+import com.staroscky.motordecisao.avaliacao.pipeline.data.PipelineDataSelecionada;
 import org.springframework.stereotype.Component;
 
 @Component

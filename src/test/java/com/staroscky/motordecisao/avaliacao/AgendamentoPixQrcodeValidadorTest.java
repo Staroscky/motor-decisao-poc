@@ -1,7 +1,8 @@
 package com.staroscky.motordecisao.avaliacao;
 
 import com.staroscky.motordecisao.avaliacao.contexto.AvaliacaoContexto;
-import com.staroscky.motordecisao.avaliacao.contexto.ResultadoViabilidade;
+import com.staroscky.motordecisao.avaliacao.contexto.ResultadoAgendamento;
+import com.staroscky.motordecisao.avaliacao.validador.agendamento.pix.AgendamentoPixQrcodeValidador;
 import com.staroscky.motordecisao.avaliacao.request.AgcontaAvaliacaoRequest;
 import com.staroscky.motordecisao.avaliacao.request.DadosOrigem;
 import com.staroscky.motordecisao.avaliacao.request.DadosQrcode;
@@ -11,7 +12,6 @@ import com.staroscky.motordecisao.avaliacao.resolver.TipoCheckin;
 import com.staroscky.motordecisao.avaliacao.upstream.AgcontaCheckinResponse;
 import com.staroscky.motordecisao.avaliacao.upstream.DadosBancarios;
 import com.staroscky.motordecisao.avaliacao.upstream.QrcodeCheckinResponse;
-import com.staroscky.motordecisao.avaliacao.validador.agendamento.PermiteAgendamentoValidador;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -19,41 +19,36 @@ import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class PermiteAgendamentoValidadorTest {
+class AgendamentoPixQrcodeValidadorTest {
 
     private static final DadosBancarios DADOS = new DadosBancarios("60701190", "0001", "12345-6", "0", "CORRENTE");
 
-    private final PermiteAgendamentoValidador validador = new PermiteAgendamentoValidador();
+    private final AgendamentoPixQrcodeValidador validador = new AgendamentoPixQrcodeValidador();
 
     @Test
-    void suportaPixComQrcode() {
-        assertThat(validador.suporta(contextoQrcode("COB"), Instrumento.PIX)).isTrue();
+    void suportaContextoQrcode() {
+        assertThat(validador.suporta(contextoQrcode("COB"))).isTrue();
     }
 
     @Test
-    void naoSuportaTedComQrcode() {
-        assertThat(validador.suporta(contextoQrcode("COB"), Instrumento.TED)).isFalse();
-    }
-
-    @Test
-    void naoSuportaPixComAgconta() {
+    void naoSuportaContextoAgconta() {
         var request = new AgcontaAvaliacaoRequest(
             "checkin:agconta:1:uuid", LocalDate.now(), new DadosOrigem("0001", "12345-6")
         );
         var checkinDestino = new AgcontaCheckinResponse("checkin:agconta:1:uuid", "uuid", DADOS);
         var contexto = new AvaliacaoContexto(request, TipoCheckin.AGCONTA, checkinDestino,
             Set.of(Instrumento.PIX, Instrumento.TED));
-        assertThat(validador.suporta(contexto, Instrumento.PIX)).isFalse();
+        assertThat(validador.suporta(contexto)).isFalse();
     }
 
     @Test
     void validarAdicionaRestricaoQrCodeNaoPermite() {
         AvaliacaoContexto contexto = contextoQrcode("COB");
-        ResultadoViabilidade resultado = new ResultadoViabilidade();
+        ResultadoAgendamento resultado = new ResultadoAgendamento();
 
-        validador.validar(contexto, Instrumento.PIX, resultado);
+        validador.validar(contexto, resultado);
 
-        assertThat(resultado.isValido()).isFalse();
+        assertThat(resultado.isPodeAgendar()).isFalse();
         assertThat(resultado.getRestricoes()).hasSize(1);
     }
 

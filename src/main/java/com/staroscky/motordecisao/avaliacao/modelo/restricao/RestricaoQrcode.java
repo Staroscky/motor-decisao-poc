@@ -1,4 +1,4 @@
-package com.staroscky.motordecisao.avaliacao.contexto;
+package com.staroscky.motordecisao.avaliacao.modelo.restricao;
 
 public record RestricaoQrcode(String motivo, ContextoQrcode contexto) implements Restricao {
 

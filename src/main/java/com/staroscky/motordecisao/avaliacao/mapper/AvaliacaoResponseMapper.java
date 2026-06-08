@@ -1,6 +1,7 @@
 package com.staroscky.motordecisao.avaliacao.mapper;
 
 import com.staroscky.motordecisao.avaliacao.contexto.AvaliacaoContexto;
+import com.staroscky.motordecisao.avaliacao.contexto.ResultadoAgendamento;
 import com.staroscky.motordecisao.avaliacao.contexto.ResultadoInstrumento;
 import com.staroscky.motordecisao.avaliacao.contexto.ResultadoViabilidade;
 import com.staroscky.motordecisao.avaliacao.resolver.Instrumento;
@@ -25,13 +26,22 @@ public class AvaliacaoResponseMapper {
                                                        AvaliacaoContexto contexto) {
         ResultadoInstrumento resultado = contexto.getResultado(instrumento);
         ResultadoViabilidadeDto dataSelecionada = toDto(resultado.getDataSelecionada());
-        ResultadoViabilidadeDto agendamento     = toDto(resultado.getAgendamento());
+        AvaliacaoAgendamento agendamento        = toAvaliacaoAgendamento(resultado.getAgendamento());
 
         return switch (instrumento) {
             case PIX -> new InstrumentoPix("PIX", dataSelecionada, agendamento);
             case TEF -> new InstrumentoTef("TEF", dataSelecionada, agendamento);
             case TED -> new InstrumentoTed("TED", dataSelecionada, agendamento, finalidadesTed());
         };
+    }
+
+    private AvaliacaoAgendamento toAvaliacaoAgendamento(ResultadoAgendamento ag) {
+        return new AvaliacaoAgendamento(
+            ag.isPodeAgendar(),
+            List.copyOf(ag.getRestricoes()),
+            ag.getProximaDataDisponivel(),
+            List.copyOf(ag.getAvisos())
+        );
     }
 
     private ResultadoViabilidadeDto toDto(ResultadoViabilidade rv) {

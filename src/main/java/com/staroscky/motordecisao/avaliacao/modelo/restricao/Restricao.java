@@ -1,4 +1,4 @@
-package com.staroscky.motordecisao.avaliacao.contexto;
+package com.staroscky.motordecisao.avaliacao.modelo.restricao;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;

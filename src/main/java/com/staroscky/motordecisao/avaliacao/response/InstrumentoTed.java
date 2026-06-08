@@ -5,7 +5,7 @@ import java.util.List;
 public record InstrumentoTed(
     String tipo,
     ResultadoViabilidadeDto dataSelecionada,
-    ResultadoViabilidadeDto agendamento,
+    AvaliacaoAgendamento agendamento,
     List<FinalidadeTed> finalidades
 ) implements InstrumentoAvaliado {
 

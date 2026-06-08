@@ -1,5 +1,8 @@
 package com.staroscky.motordecisao.avaliacao.contexto;
 
+import com.staroscky.motordecisao.avaliacao.modelo.Limite;
+import com.staroscky.motordecisao.avaliacao.modelo.restricao.Restricao;
+
 import java.util.ArrayList;
 import java.util.List;
 
