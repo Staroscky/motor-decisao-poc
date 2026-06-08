@@ -7,9 +7,10 @@ import com.staroscky.motordecisao.avaliacao.upstream.CheckinResponse;
 import com.staroscky.motordecisao.avaliacao.upstream.DadosBancarios;
 
 import java.time.LocalDate;
-import java.util.EnumMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 public class AvaliacaoContexto {
 
@@ -17,8 +18,8 @@ public class AvaliacaoContexto {
     private final TipoCheckin tipoCheckin;
     private final CheckinResponse checkinDestino;
     private final Set<Instrumento> instrumentos;
-    private final Map<Instrumento, ResultadoInstrumento> resultados =
-        new EnumMap<>(Instrumento.class);
+    private final ConcurrentMap<Instrumento, ResultadoInstrumento> resultados =
+        new ConcurrentHashMap<>();
 
     public AvaliacaoContexto(AvaliacaoRequest request, TipoCheckin tipoCheckin,
                               CheckinResponse checkinDestino, Set<Instrumento> instrumentos) {
