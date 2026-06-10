@@ -23,6 +23,7 @@
 - Padrões arquiteturais importantes
 - Convenções de naming
 - Estratégia de estado, rotas, API ou componentes
+- Skills de padrão do projeto a seguir: `vertical-slice`, `kotlin-boas-praticas`, `testes-unitarios`
 
 ## Domínio e regras importantes
 

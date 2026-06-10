@@ -88,7 +88,8 @@ Transformar o PRD aprovado em uma especificação técnica implementável basead
 
 1. Explorar o código relevante antes de escrever.
 2. Referenciar arquivos, interfaces, funções, componentes e fluxos reais.
-3. Criar `docs/<feature-name>/SPEC.md` usando o template.
+3. Consultar as skills de padrão do projeto antes de desenhar a solução: `vertical-slice` (estrutura e camadas), `kotlin-boas-praticas` (modelagem e idiomas) e `testes-unitarios` (estratégia de teste). A SPEC deve refletir esses padrões.
+4. Criar `docs/<feature-name>/SPEC.md` usando o template.
 4. Registrar o contexto da história, tarefa ou solicitação do usuário logo no início da SPEC.
 5. Separar requisitos funcionais de requisitos não funcionais.
 6. Explicitar “o que muda” e “o que não muda”.
@@ -116,6 +117,7 @@ Não gerar SPEC genérica ou desacoplada do projeto atual.
 - critérios de aceite são verificáveis
 - escopo e não escopo estão explícitos
 - estado atual e arquivos afetados refletem o código real
+- a solução está em conformidade com as skills de padrão do projeto (`vertical-slice`, `kotlin-boas-praticas`, `testes-unitarios`)
 - riscos, edge cases e operação foram cobertos no nível adequado
 
 ## Fase 6 — Tasks
@@ -124,7 +126,8 @@ Só após aprovação explícita da SPEC:
 
 1. Criar as tasks em `docs/<feature-name>/tasks/`.
 2. Seguir a nomenclatura `TASK-N-<descricao>.md`.
-3. Sempre incluir uma task final `TASK-N-verificacao-e2e.md`.
+3. Refletir nas tasks os padrões do projeto: posicionamento de arquivos conforme `vertical-slice`, modelagem conforme `kotlin-boas-praticas` e testes conforme `testes-unitarios`.
+4. Sempre incluir uma task final `TASK-N-verificacao-e2e.md`.
 
 ### Regras
 

@@ -38,6 +38,13 @@
 - [ ] Há estratégia clara de validação
 - [ ] Riscos e observações relevantes foram registrados
 
+## Conformidade com padrões do projeto
+
+- [ ] A estrutura proposta segue o padrão Vertical Slice (camadas `controller`/`domain`/`service`/`integration`, encapsulamento por interface pública, integração externa isolada) — skill `vertical-slice`
+- [ ] A modelagem segue as boas práticas de Kotlin (nulabilidade explícita, imutabilidade, sealed/value class, estado impossível irrepresentável) — skill `kotlin-boas-praticas`
+- [ ] A estratégia de testes segue as boas práticas (AAA, comportamento sobre implementação, fronteira unitário × integração) — skill `testes-unitarios`
+- [ ] Eventuais desvios conscientes de algum padrão estão justificados na SPEC
+
 ## Regras de qualidade da SPEC
 
 - Sempre referenciar código real quando houver implementação existente

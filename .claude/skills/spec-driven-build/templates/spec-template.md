@@ -124,24 +124,30 @@
 
 - <feature flag, migração, compatibilidade retroativa, fallback, plano de ativação>
 
-## 13. Estratégia de validação
+## 13. Conformidade com padrões do projeto
+
+- Vertical Slice (`vertical-slice`): <como a estrutura proposta respeita camadas, encapsulamento e isolamento de integração; ou justificativa do desvio>
+- Kotlin (`kotlin-boas-praticas`): <decisões de modelagem — sealed/value/data class, nulabilidade, imutabilidade>
+- Testes (`testes-unitarios`): <fronteira unitário × integração e o que será coberto>
+
+## 14. Estratégia de validação
 
 - Testes unitários: <escopo>
 - Testes de integração: <escopo>
 - Testes e2e ou manuais: <escopo>
 - Sinais operacionais: <como verificar em runtime ou produção>
 
-## 14. Critérios de aceite
+## 15. Critérios de aceite
 
 - [ ] <critério objetivo e verificável>
 - [ ] <critério objetivo e verificável>
 - [ ] Casos de erro e fallback relevantes foram considerados.
 - [ ] Build e testes relevantes passam sem regressão
 
-## 15. Riscos e observações
+## 16. Riscos e observações
 
 <Segurança, performance, acessibilidade, migração, compatibilidade, rollout ou débito técnico>
 
-## 16. Questões em aberto
+## 17. Questões em aberto
 
 - <decisão pendente, se houver>
